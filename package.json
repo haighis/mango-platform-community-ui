@@ -1,0 +1,74 @@
+{
+  "name": "@haighis/mango-platform-community",
+  "version": "1.0.0-rc.12",
+  "main": "dist/index.js",
+  "module": "dist/mango-platform-community.esm.js",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haighis/mango-platform-community"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "prepublishOnly": "npm run build",
+    "test": "tsdx test --coverage",
+    "lint": "tsdx lint ./src/**/**/*.ts --fix",
+    "prettify": "prettier --write ./src/**/**/*.ts",
+    "commit": "npx git-cz",
+    "release": "release-it",
+    "docs": "docsify serve docs"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tsdx lint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@release-it/conventional-changelog": "^1.1.4",
+    "@types/jest": "^26.0.23",
+    "cz-conventional-changelog": "^3.3.0",
+    "docsify-cli": "^4.4.2",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.3.1",
+    "prismjs": "^1.23.0",
+    "release-it": "^14.8.0",
+    "tsdx": "^0.14.1",
+    "typescript": "^4.1.2",
+    "unfetch": "^4.2.0"
+  }
+}
